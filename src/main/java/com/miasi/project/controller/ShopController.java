@@ -17,6 +17,12 @@ public class ShopController {
 
     private final ShopService shopService;
 
+    @GetMapping("/confirm")
+    public ResponseEntity<Object> confirmOrder() {
+        shopService.confirmOrder();
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping("/order")
     public ResponseEntity<Object> makeOrder(@RequestBody CarOrder carOrder) {
         shopService.orderCar(carOrder);

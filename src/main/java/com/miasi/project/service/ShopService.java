@@ -1,7 +1,7 @@
 package com.miasi.project.service;
 
+import com.miasi.project.delegates.CheckMaterialAvability;
 import com.miasi.project.model.*;
-import com.miasi.project.module.Factory;
 import com.miasi.project.repository.*;
 import lombok.RequiredArgsConstructor;
 
@@ -13,12 +13,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ShopService {
 
+    private final CamundaService camundaService;
+
     private final EngineRepository engineRepository;
     private final ModelRepository modelRepository;
     private final PaintRepository paintRepository;
     private final TiresRepository tiresRepository;
     private final TransmissionRepository transmissionRepository;
-    private final Factory factory;
+    private final CheckMaterialAvability checkMaterialAvability;
+
+
+    public void confirmOrder() {
+        camundaService.receive();
+    }
 
     public List<Engine> getEngines() {
         return engineRepository.findAll();
@@ -41,7 +48,8 @@ public class ShopService {
     }
 
     public boolean orderCar(CarOrder carOrder) {
-        factory.makeCar(carOrder);
+        checkMaterialAvability.setCarOrder(carOrder);
+        camundaService.start();
         return true;
     }
 }
