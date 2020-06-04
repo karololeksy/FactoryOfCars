@@ -1,6 +1,7 @@
 package com.miasi.project.service;
 
 import com.miasi.project.delegates.CheckMaterialAvability;
+import com.miasi.project.delegates.GetMaterialWarehouse;
 import com.miasi.project.model.*;
 import com.miasi.project.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 public class ShopService {
 
     private final CamundaService camundaService;
+    private final GetMaterialWarehouse getMaterialWarehouse;
 
     private final EngineRepository engineRepository;
     private final ModelRepository modelRepository;
@@ -49,6 +51,7 @@ public class ShopService {
 
     public boolean orderCar(CarOrder carOrder) {
         checkMaterialAvability.setCarOrder(carOrder);
+        getMaterialWarehouse.setCarOrder(carOrder);
         camundaService.start();
         return true;
     }
