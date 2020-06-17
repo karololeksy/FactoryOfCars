@@ -76,10 +76,10 @@
     <bpmn:sequenceFlow id="Flow_0uhbwf5" sourceRef="Activity_1yxo2zh" targetRef="PutInCar" />
     <bpmn:sequenceFlow id="Flow_1wfjagf" sourceRef="PutInCar" targetRef="IsPatrsCorr" />
     <bpmn:sequenceFlow id="Flow_1wr8ove" sourceRef="Activity_1gannz2" targetRef="Event_0lalxhb" />
-    <bpmn:sequenceFlow id="Flow_0rpszhq" sourceRef="IsPatrsCorr" targetRef="Activity_1gannz2">
+    <bpmn:sequenceFlow id="Flow_0rpszhq" name="Tak" sourceRef="IsPatrsCorr" targetRef="Activity_1gannz2">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{isPartsCorrect == true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1fefhr6" sourceRef="IsPatrsCorr" targetRef="Activity_1yxo2zh">
+    <bpmn:sequenceFlow id="Flow_1fefhr6" name="Nie" sourceRef="IsPatrsCorr" targetRef="Activity_1yxo2zh">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{isPartsCorrect == false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:serviceTask id="Activity_1gannz2" name="Przytwierdź części do konstrukcji" camunda:class="com.miasi.project.delegates.AttachMaterialCar">
@@ -88,7 +88,7 @@
     </bpmn:serviceTask>
     <bpmn:endEvent id="Event_0lalxhb" name="Sukces">
       <bpmn:incoming>Flow_1wr8ove</bpmn:incoming>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0s106bj" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0s106bj" camunda:class="com.miasi.project.delegates.SendSucessMail" />
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0qz7uji" sourceRef="GetMaterialsError" targetRef="Event_19z7lk7" />
     <bpmn:endEvent id="Event_19z7lk7" name="Niepowodzenie">
@@ -111,6 +111,42 @@
       <bpmndi:BPMNShape id="Participant_0fzvj86_di" bpmnElement="carfactory" isHorizontal="true">
         <dc:Bounds x="160" y="430" width="1800" height="449" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0qz7uji_di" bpmnElement="Flow_0qz7uji">
+        <di:waypoint x="1340" y="728" />
+        <di:waypoint x="1340" y="840" />
+        <di:waypoint x="1800" y="840" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fefhr6_di" bpmnElement="Flow_1fefhr6">
+        <di:waypoint x="1600" y="695" />
+        <di:waypoint x="1600" y="740" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1607" y="715" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rpszhq_di" bpmnElement="Flow_0rpszhq">
+        <di:waypoint x="1625" y="670" />
+        <di:waypoint x="1680" y="670" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1644" y="652" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wr8ove_di" bpmnElement="Flow_1wr8ove">
+        <di:waypoint x="1780" y="670" />
+        <di:waypoint x="1862" y="670" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wfjagf_di" bpmnElement="Flow_1wfjagf">
+        <di:waypoint x="1490" y="670" />
+        <di:waypoint x="1575" y="670" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0uhbwf5_di" bpmnElement="Flow_0uhbwf5">
+        <di:waypoint x="1550" y="780" />
+        <di:waypoint x="1440" y="780" />
+        <di:waypoint x="1440" y="710" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_071rcbc_di" bpmnElement="Flow_071rcbc">
+        <di:waypoint x="1340" y="670" />
+        <di:waypoint x="1390" y="670" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1b6n451_di" bpmnElement="Flow_1b6n451">
         <di:waypoint x="1175" y="670" />
         <di:waypoint x="1240" y="670" />
@@ -151,36 +187,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="694" y="741" width="17" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_071rcbc_di" bpmnElement="Flow_071rcbc">
-        <di:waypoint x="1340" y="670" />
-        <di:waypoint x="1390" y="670" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0uhbwf5_di" bpmnElement="Flow_0uhbwf5">
-        <di:waypoint x="1550" y="780" />
-        <di:waypoint x="1440" y="780" />
-        <di:waypoint x="1440" y="710" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1wfjagf_di" bpmnElement="Flow_1wfjagf">
-        <di:waypoint x="1490" y="670" />
-        <di:waypoint x="1575" y="670" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1wr8ove_di" bpmnElement="Flow_1wr8ove">
-        <di:waypoint x="1780" y="670" />
-        <di:waypoint x="1862" y="670" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0rpszhq_di" bpmnElement="Flow_0rpszhq">
-        <di:waypoint x="1625" y="670" />
-        <di:waypoint x="1680" y="670" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1fefhr6_di" bpmnElement="Flow_1fefhr6">
-        <di:waypoint x="1600" y="695" />
-        <di:waypoint x="1600" y="740" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0qz7uji_di" bpmnElement="Flow_0qz7uji">
-        <di:waypoint x="1340" y="728" />
-        <di:waypoint x="1340" y="840" />
-        <di:waypoint x="1800" y="840" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Gateway_14o00uw_di" bpmnElement="IsMaterialAvability" isMarkerVisible="true">
         <dc:Bounds x="604" y="734" width="50" height="50" />
