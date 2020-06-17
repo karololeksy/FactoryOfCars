@@ -14,7 +14,7 @@ public class SendOrderMail implements JavaDelegate {
     private final CheckMaterialAvability checkMaterialAvability;
 
     @Override
-    public void execute(DelegateExecution delegateExecution) throws Exception {
+    public void execute(DelegateExecution delegateExecution) {
         emailService.sendOrder(checkMaterialAvability.getCarOrder());
     }
 }

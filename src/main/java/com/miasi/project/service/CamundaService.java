@@ -26,8 +26,4 @@ public class CamundaService {
     public void receive() {
         runtimeService.messageEventReceived(subscription.getEventName(), subscription.getExecutionId());
     }
-
-
-
-
 }

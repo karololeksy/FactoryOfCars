@@ -10,4 +10,5 @@ public class CarOrder {
     private int transmissionId;
     private int tiresId;
     private int paintId;
+    private String email;
 }

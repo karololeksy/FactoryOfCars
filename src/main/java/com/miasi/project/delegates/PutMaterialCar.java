@@ -8,8 +8,9 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Component
 public class PutMaterialCar implements JavaDelegate {
-    @Override
-    public void execute(DelegateExecution delegateExecution) throws Exception {
 
+    @Override
+    public void execute(DelegateExecution delegateExecution) {
+        delegateExecution.setVariable("isPartsCorrect", true);
     }
 }

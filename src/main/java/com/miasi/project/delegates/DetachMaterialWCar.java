@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class DetachMaterialWCar implements JavaDelegate {
 
     @Override
-    public void execute(DelegateExecution delegateExecution) throws Exception {
+    public void execute(DelegateExecution delegateExecution) {
 
     }
 }

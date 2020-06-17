@@ -23,7 +23,6 @@ public class Engine implements InStock {
 
     private double price;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private boolean inStock;
 
 }

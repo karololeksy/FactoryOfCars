@@ -1,6 +1,7 @@
 package com.miasi.project.delegates;
 
 import com.miasi.project.module.EmailService;
+import com.miasi.project.service.Database;
 import lombok.RequiredArgsConstructor;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -13,7 +14,7 @@ public class SendFailureMail implements JavaDelegate {
     private final EmailService emailServicel;
 
     @Override
-    public void execute(DelegateExecution delegateExecution) throws Exception {
-        emailServicel.sendFailure();
+    public void execute(DelegateExecution delegateExecution) {
+        emailServicel.sendFailure(Database.email);
     }
 }

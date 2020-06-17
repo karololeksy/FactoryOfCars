@@ -24,7 +24,6 @@ public class ShopService {
     private final TransmissionRepository transmissionRepository;
     private final CheckMaterialAvability checkMaterialAvability;
 
-
     public void confirmOrder() {
         camundaService.receive();
     }
@@ -50,8 +49,10 @@ public class ShopService {
     }
 
     public boolean orderCar(CarOrder carOrder) {
+        System.out.println("Hej");
+        Database.email = carOrder.getEmail();
         checkMaterialAvability.setCarOrder(carOrder);
-        getMaterialWarehouse.setCarOrder(carOrder);
+//        getMaterialWarehouse.setCarOrder(carOrder);
         camundaService.start();
         return true;
     }

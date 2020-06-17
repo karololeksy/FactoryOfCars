@@ -19,7 +19,7 @@ public class PutMaterialWarehouse implements JavaDelegate {
     private final Warehouse warehouse;
 
     @Override
-    public void execute(DelegateExecution delegateExecution) throws Exception {
+    public void execute(DelegateExecution delegateExecution) {
         wholesale.orderParts(carOrder);
         DeliveredParts deliveredParts = wholesale.receiveParts();
         warehouse.addEngine(deliveredParts.getEngine());

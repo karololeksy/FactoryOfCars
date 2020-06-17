@@ -11,5 +11,6 @@ public class Car {
     private Tires tires;
     private Paint paint;
     private int price;
+    private boolean available;
 
 }

@@ -16,7 +16,6 @@ public class CheckMaterialAvability implements JavaDelegate {
     private final PutMaterialWarehouse putMaterialWarehouse;
     private CarOrder carOrder;
 
-
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
         if(isNoInStockAllParts(carOrder)) {
@@ -55,7 +54,5 @@ public class CheckMaterialAvability implements JavaDelegate {
     public void setCarOrder(CarOrder carOrder) {
         this.carOrder = carOrder;
     }
-
-
 
 }
