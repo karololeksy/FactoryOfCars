@@ -15,6 +15,7 @@ public class SendOrderMail implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution delegateExecution) {
+        System.out.println("Wysylam maila z zamowieniem!");
         emailService.sendOrder(checkMaterialAvability.getCarOrder());
     }
 }

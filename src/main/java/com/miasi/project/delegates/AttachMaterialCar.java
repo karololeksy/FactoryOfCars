@@ -10,6 +10,6 @@ import org.springframework.stereotype.Component;
 public class AttachMaterialCar implements JavaDelegate {
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
-
+        System.out.println("Potwierdzam umieszczenie czesci!");
     }
 }

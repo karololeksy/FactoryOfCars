@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class DetachMaterialWCar implements JavaDelegate {
+public class DetachMaterialCar implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution delegateExecution) {
-
+        System.out.println("Demontuje czesci!");
     }
 }

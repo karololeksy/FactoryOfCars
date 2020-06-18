@@ -18,6 +18,7 @@ public class CheckMaterialAvability implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
+        System.out.println("Sprawdzam czy czesci znajduja sie w magazynie!");
         if(isNoInStockAllParts(carOrder)) {
             delegateExecution.setVariable("isPartsPresent", false);
             putMaterialWarehouse.setCarOrder(carOrder);

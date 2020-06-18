@@ -15,6 +15,7 @@ public class SendFailureMail implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution delegateExecution) {
+        System.out.println("Wysylam maila z bledem!\n");
         emailServicel.sendFailure(Database.email);
     }
 }

@@ -15,6 +15,7 @@ public class GetMaterialWarehouse implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution delegateExecution) {
+        System.out.println("Pobieram czesci z magazynu!");
         if(error) {
             error = false;
             throw new BpmnError("100", "Lift problem");

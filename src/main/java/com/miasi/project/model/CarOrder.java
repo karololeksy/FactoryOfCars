@@ -11,4 +11,5 @@ public class CarOrder {
     private int tiresId;
     private int paintId;
     private String email;
+    private boolean mountParts;
 }

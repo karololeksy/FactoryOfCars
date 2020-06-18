@@ -50,6 +50,7 @@ public class ShopService {
 
     public boolean orderCar(CarOrder carOrder) {
         Database.email = carOrder.getEmail();
+        Database.mount = carOrder.isMountParts();
         checkMaterialAvability.setCarOrder(carOrder);
         camundaService.start();
         return true;
